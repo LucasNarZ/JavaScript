@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 1000px;
+        }
+        #nav{
+        display: flex;
+        width: 100vw;
+        position: fixed;
+        height: 50px;
+        justify-content: space-between ;
+        align-items: center;
+        background-color: gray;
+        padding: 0 auto;
+        }
+        #logo{
+            font-size: 25px;
+
+        }
+        #menus{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 30px;
+            font-size: 18px;
+        }
+        #menus a{
+            text-decoration: none;
+            color: black;
+        }
+        #socialMedia{
+            display: none;
+        }
+        #socialMedia img{
+            width: 10px;
+            height: 10px;
+            transform: translate(50px 50px);
+        }
+        .hamburgerMenu{
+            width: 25px;
+            height: 20px;
+            position: absolute;
+            display: none;
+            justify-content: space-between;
+            flex-direction: column;
+            top: .75rem;
+            right: .75rem;
+        }
+        .line{
+            height: 4px;
+            width: 100%;
+            display: flex;
+            background-color: black;
+        }
+        @media (max-width:700px){
+            #socialMedias{
+                display: none;
+            }
+            #nav{
+                flex-direction: column;
+                align-items: center;
+
+
+            }
+            #logo{
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            #menus{
+                display: none;
+                flex-direction: column;
+            }
+            #menus a{
+                width: 100vw;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(196, 196, 196);
+            }
+            #menus a:hover{
+                background-color: rgb(114, 114, 114);
+            }
+            .hamburgerMenu{
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div id="logo">
+            Coding Addict
+        </div>
+        <div id="menus">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Projects</a>
+            <a href="#">Contacts</a>
+        </div>
+        <div id="socialMedias">
+            <img src="icon1.svg" alt="icon">
+            <img src="icon1.svg" alt="icon">
+            <img src="icon1.svg" alt="icon">
+            <img src="icon1.svg" alt="icon">
+            <img src="icon1.svg" alt="icon">
+        </div>
+        <div class="hamburgerMenu" onclick="showMenu()">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+    </nav>
+    <script>
+        let showMenu = () => {
+            let menus = document.querySelector("#menus");
+            if(menus.style.display === "none"){
+                menus.style.display = "flex";
+            }else{
+                menus.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

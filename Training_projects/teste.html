@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        #review{
+            height: 500px;
+            width: 500px;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #a{
+
+        }
+        .person{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .img{
+            width : 150px;
+            height : 150px;
+            border-radius : 50%;
+        }
+    </style>                                    
+</head>
+<body>
+    <main>
+        <h1>Our Reviews</h1>
+        <div id="review">
+        </div>
+        <div id="buttons">
+            <button id="beforeButton" onclick="lastOpinion()">
+                voltar
+            </button>
+            <button id="afterButton" onclick="nextOpinion()">
+                ir
+            </button>
+            <button id="surpriceButton" onclick="surpriceMe()">Surprice Me</button>
+        </div>
+    </main>
+
+    <script>
+        let review = document.querySelector("#review");
+        let currentPerson = 0;
+        let opinions = [
+            () => {
+                review.innerHTML = "";
+                let person1 = document.createElement("div");
+                person1.classList.add("person")
+                let img1 = document.createElement("div");
+                img1.classList.add("img")
+                img1.style.backgroundColor = "red";
+                person1.append(img1);
+                let para1 = document.createElement("p");
+                para1 = "Neste tutorial, você aprenderá a criar um carrossel de revisões com um botãoque gera revisões aleatórias.É um bom recurso para se ter em um site de comércioeletrônico para exibir revisões de clientes ou em um portfólio pessoal para exibir as revisões de seus clientes."
+                //para1.style.textAlign = "center";
+                person1.append(para1);
+                review.append(person1);
+            },
+            () => {
+                review.innerHTML = "";
+                let person2 = document.createElement("div");
+                person2.classList.add("person")
+                let img2 = document.createElement("div");
+                img2.classList.add("img")
+                img2.style.backgroundColor = "yellow";
+                person2.append(img2);
+                let para2 = document.createElement("p");
+                para2 = "Neste tutorial, você aprenderá a criar um carrossel de revisões com um botãoque gera revisões aleatórias.É um bom recurso para se ter em um site de comércioeletrônico para exibir"
+                //para2.style.textAlign = "center";
+                person2.append(para2);
+                review.append(person2);
+            },
+            () => {
+                review.innerHTML = "";
+                let person3 = document.createElement("div");
+                person3.classList.add("person")
+                let img3 = document.createElement("div");
+                img3.classList.add("img")
+                img3.style.backgroundColor = "pink";
+                person3.append(img3);
+                let para3 = document.createElement("p");
+                para3 = "Neste tutorial, você aprenderá a criar um carrossel de "
+                //para3.style.textAlign = "center";
+                person3.append(para3);
+                review.append(person3);
+            }
+        ]
+        opinions[currentPerson]()
+        let nextOpinion = () => {
+            currentPerson++
+            if(currentPerson < 0){
+                currentPerson += 3;
+            }
+            if(currentPerson === 3){
+                currentPerson -= 3;  
+            }
+            opinions[currentPerson]()
+        }
+        let lastOpinion = () => {
+            currentPerson--
+            if(currentPerson < 0){
+                currentPerson += 3;
+            }
+            opinions[currentPerson]()
+        }
+        let surpriceMe = () => {
+            let copy = currentPerson
+            while(currentPerson == copy){
+                currentPerson = Math.floor(Math.random() * 3)
+            }
+            opinions[currentPerson]()
+        }
+    </script>
+</body>
+</html>
