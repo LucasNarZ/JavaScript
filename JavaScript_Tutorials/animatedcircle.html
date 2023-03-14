@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circle</title>
+    <style>
+        .circle{
+            transition-duration: 2s;
+            transition-property: width, height;
+            border-radius: 50%;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="button" onclick="go()">Show Circle</button>
+    <script>
+        let body = document.body;
+        let circle = document.createElement("div");
+            circle.style.width = 0;
+            circle.style.height = 0;
+            circle.classList.add("circle");
+            circle.style.position = "fixed";
+            body.append(circle);
+        function go(){
+            show(200, 200, 100).then((div) => {
+            div.style.textAlign = "center";
+            div.style.fontSize = "25px"
+            div.innerText = "asdada"
+            }
+        )};
+        function show(cx, cy, radius){
+            return new Promise(resolved => {
+                setTimeout(()=>{
+                circle.style.transform = "translateX(-50%) translateY(-50%)";
+                circle.style.left = cx + 'px';
+                circle.style.top = cy + 'px';
+                circle.style.width = radius*2 + "px";
+                circle.style.height = radius*2 + "px";
+
+                circle.addEventListener("transitionend", function handler(){
+                    circle.removeEventListener("transitionend", handler);
+                    console.log("asdads")
+                    resolved(circle);
+                    console.log("asdads")
+                })
+            }, 0)})
+            
+        }
+
+    </script>
+</body>
+</html>
